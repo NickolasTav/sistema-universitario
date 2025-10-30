@@ -1,0 +1,12 @@
+C:\Trabalho-aps2\sistema-universitario\Sistema.Universitario.Application\bin\Debug\net8.0\Sistema.Universitario.Application.deps.json
+C:\Trabalho-aps2\sistema-universitario\Sistema.Universitario.Application\bin\Debug\net8.0\Sistema.Universitario.Application.dll
+C:\Trabalho-aps2\sistema-universitario\Sistema.Universitario.Application\bin\Debug\net8.0\Sistema.Universitario.Application.pdb
+C:\Trabalho-aps2\sistema-universitario\Sistema.Universitario.Application\obj\Debug\net8.0\Sistema.Universitario.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Trabalho-aps2\sistema-universitario\Sistema.Universitario.Application\obj\Debug\net8.0\Sistema.Universitario.Application.AssemblyInfoInputs.cache
+C:\Trabalho-aps2\sistema-universitario\Sistema.Universitario.Application\obj\Debug\net8.0\Sistema.Universitario.Application.AssemblyInfo.cs
+C:\Trabalho-aps2\sistema-universitario\Sistema.Universitario.Application\obj\Debug\net8.0\Sistema.Universitario.Application.csproj.CoreCompileInputs.cache
+C:\Trabalho-aps2\sistema-universitario\Sistema.Universitario.Application\obj\Debug\net8.0\Sistema.Universitario.Application.sourcelink.json
+C:\Trabalho-aps2\sistema-universitario\Sistema.Universitario.Application\obj\Debug\net8.0\Sistema.Universitario.Application.dll
+C:\Trabalho-aps2\sistema-universitario\Sistema.Universitario.Application\obj\Debug\net8.0\refint\Sistema.Universitario.Application.dll
+C:\Trabalho-aps2\sistema-universitario\Sistema.Universitario.Application\obj\Debug\net8.0\Sistema.Universitario.Application.pdb
+C:\Trabalho-aps2\sistema-universitario\Sistema.Universitario.Application\obj\Debug\net8.0\ref\Sistema.Universitario.Application.dll
