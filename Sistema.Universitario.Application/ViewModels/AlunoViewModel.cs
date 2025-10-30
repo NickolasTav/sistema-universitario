@@ -17,4 +17,6 @@ public class AlunoViewModel
 
         [Required]
         public Guid CursoId { get; set; }
+    // optional display name for the course
+    public string CursoNome { get; set; }
 }

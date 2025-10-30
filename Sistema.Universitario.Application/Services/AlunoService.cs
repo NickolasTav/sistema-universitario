@@ -12,10 +12,12 @@ namespace Sistema.Universitario.Application.Services;
 public class AlunoService : IAlunoService
 {
     private readonly IAlunoRepository _repository;
+    private readonly ICursoRepository _cursoRepository;
 
-    public AlunoService(IAlunoRepository repository)
+    public AlunoService(IAlunoRepository repository, ICursoRepository cursoRepository)
     {
         _repository = repository;
+        _cursoRepository = cursoRepository;
     }
 
     public async Task<AlunoViewModel> AddAsync(AlunoViewModel aluno)
@@ -33,13 +35,30 @@ public class AlunoService : IAlunoService
     public async Task<IEnumerable<AlunoViewModel>> GetAllAsync()
     {
         var list = await _repository.GetAllAsync();
-        return list.Select(ToViewModel);
+        var cursos = (await _cursoRepository.GetAllAsync()).ToDictionary(c => c.Id, c => c.Nome);
+        return list.Select(e => new AlunoViewModel
+        {
+            Id = e.Id,
+            Nome = e.Nome,
+            Matricula = e.Matricula,
+            CursoId = e.CursoId,
+            CursoNome = cursos.TryGetValue(e.CursoId, out var nome) ? nome : null
+        });
     }
 
     public async Task<AlunoViewModel> GetByIdAsync(Guid id)
     {
         var e = await _repository.GetByIdAsync(id);
-        return e == null ? null : ToViewModel(e);
+        if (e == null) return null;
+        var curso = await _cursoRepository.GetByIdAsync(e.CursoId);
+        return new AlunoViewModel
+        {
+            Id = e.Id,
+            Nome = e.Nome,
+            Matricula = e.Matricula,
+            CursoId = e.CursoId,
+            CursoNome = curso?.Nome
+        };
     }
 
     public async Task<AlunoViewModel> UpdateAsync(AlunoViewModel aluno)

@@ -36,6 +36,12 @@ public class AlunosController : Controller
     {
         var cursos = await _cursoService.GetAllAsync();
         ViewBag.Cursos = new SelectList(cursos, "Id", "Nome");
+        // If there are no cursos yet, redirect to create a course first
+        if (!cursos.Any())
+        {
+            TempData["Info"] = "Não existem cursos. Crie um curso antes de cadastrar alunos.";
+            return RedirectToAction("Create", "Cursos");
+        }
         return View();
     }
 

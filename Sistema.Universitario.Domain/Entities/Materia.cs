@@ -15,8 +15,7 @@ namespace Sistema.Universitario.Domain.Entities
         public Guid CursoId { get; set; }
         public Curso Curso { get; set; }
 
-        [Required]
-        public Guid ProfessorId { get; set; }
-        public Professor Professor { get; set; }
+    public Guid? ProfessorId { get; set; }
+    public Professor? Professor { get; set; }
     }
 }

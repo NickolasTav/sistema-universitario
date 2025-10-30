@@ -22,7 +22,9 @@
     </div>
     <div class="form-group">
         <label asp-for="ProfessorId">Professor</label>
-        <select asp-for="ProfessorId" class="form-control" asp-items="(SelectList)ViewBag.Professores"></select>
+        <select asp-for="ProfessorId" class="form-control" asp-items="(SelectList)ViewBag.Professores">
+            @Html.Raw(Model.ProfessorId.HasValue ? "<option value=\"\">-- (opcional) --</option>" : "<option value=\"\" selected>-- (opcional) --</option>")
+        </select>
         <span asp-validation-for="ProfessorId" class="text-danger"></span>
     </div>
     <div class="form-group mt-2">

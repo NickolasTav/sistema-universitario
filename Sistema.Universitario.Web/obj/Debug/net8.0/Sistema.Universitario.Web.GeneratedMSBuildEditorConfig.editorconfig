@@ -17,13 +17,13 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Sistema.Universitario.Web
 build_property.RootNamespace = Sistema.Universitario.Web
-build_property.ProjectDir = C:\Trabalho-aps2\sistema-universitario\Sistema.Universitario.Web\
+build_property.ProjectDir = c:\Trabalho-aps2\sistema-universitario\Sistema.Universitario.Web\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Trabalho-aps2\sistema-universitario\Sistema.Universitario.Web
+build_property.MSBuildProjectDirectory = c:\Trabalho-aps2\sistema-universitario\Sistema.Universitario.Web
 build_property._RazorSourceGeneratorDebug = 
 
 [c:/Trabalho-aps2/sistema-universitario/Sistema.Universitario.Web/Views/Alunos/Create.cshtml]
@@ -116,6 +116,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [c:/Trabalho-aps2/sistema-universitario/Sistema.Universitario.Web/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Trabalho-aps2/sistema-universitario/Sistema.Universitario.Web/Views/Shared/_EntityCard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9FbnRpdHlDYXJkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [c:/Trabalho-aps2/sistema-universitario/Sistema.Universitario.Web/Views/Shared/_ValidationScriptsPartial.cshtml]

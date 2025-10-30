@@ -14,6 +14,7 @@ public class CursoRepository : BaseRepository<Curso>, ICursoRepository
         return await _dbSet
             .Include(c => c.Alunos)
             .Include(c => c.Materias)
+                .ThenInclude(m => m.Professor)
             .FirstOrDefaultAsync(c => c.Id == id);
     }
 }

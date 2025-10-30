@@ -37,6 +37,6 @@ public class SistemaUniversitarioDbContext : DbContext
                     .HasOne(m => m.Professor)
                     .WithMany(p => p.Materias)
                     .HasForeignKey(m => m.ProfessorId)
-                    .OnDelete(DeleteBehavior.Restrict);
+                    .OnDelete(DeleteBehavior.SetNull);
     }
 }

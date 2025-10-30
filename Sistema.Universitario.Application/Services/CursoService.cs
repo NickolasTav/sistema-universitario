@@ -58,8 +58,8 @@ public class CursoService : ICursoService
         {
             Id = c.Id,
             Nome = c.Nome,
-            Materias = c.Materias?.Select(m => new MateriaViewModel { Id = m.Id, Nome = m.Nome, CursoId = m.CursoId, ProfessorId = m.ProfessorId }) ?? Enumerable.Empty<MateriaViewModel>(),
-            Alunos = c.Alunos?.Select(a => new AlunoViewModel { Id = a.Id, Nome = a.Nome, Matricula = a.Matricula, CursoId = a.CursoId }) ?? Enumerable.Empty<AlunoViewModel>()
+            Materias = c.Materias?.Select(m => new MateriaViewModel { Id = m.Id, Nome = m.Nome, CursoId = m.CursoId, ProfessorId = m.ProfessorId, ProfessorNome = m.Professor?.Nome }) ?? Enumerable.Empty<MateriaViewModel>(),
+            Alunos = c.Alunos?.Select(a => new AlunoViewModel { Id = a.Id, Nome = a.Nome, Matricula = a.Matricula, CursoId = a.CursoId, CursoNome = c.Nome }) ?? Enumerable.Empty<AlunoViewModel>()
         };
 
         return detail;

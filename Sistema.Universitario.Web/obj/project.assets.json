@@ -4770,11 +4770,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Application\\Sistema.Universitario.Application.csproj": {
-              "projectPath": "C:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Application\\Sistema.Universitario.Application.csproj"
+            "c:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Application\\Sistema.Universitario.Application.csproj": {
+              "projectPath": "c:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Application\\Sistema.Universitario.Application.csproj"
             },
-            "c:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Domain\\Sistema.Universitario.Domain.csproj": {
-              "projectPath": "c:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Domain\\Sistema.Universitario.Domain.csproj"
+            "C:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Domain\\Sistema.Universitario.Domain.csproj": {
+              "projectPath": "C:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Domain\\Sistema.Universitario.Domain.csproj"
             },
             "C:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Infrastructure\\Sistema.Universitario.Infrastructure.csproj": {
               "projectPath": "C:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Infrastructure\\Sistema.Universitario.Infrastructure.csproj"

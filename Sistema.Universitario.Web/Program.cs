@@ -29,6 +29,21 @@ builder.Services.AddScoped<IMateriaService, MateriaService>();
 
 var app = builder.Build();
 
+// Seed database with sample data (development)
+using (var scope = app.Services.CreateScope())
+{
+    var provider = scope.ServiceProvider;
+    try
+    {
+        Sistema.Universitario.Infrastructure.Data.SeedData.SeedAsync(provider).GetAwaiter().GetResult();
+    }
+    catch (Exception ex)
+    {
+        // swallow to avoid blocking startup in development; logged by the app on runtime
+        Console.WriteLine($"Seed error: {ex.Message}");
+    }
+}
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

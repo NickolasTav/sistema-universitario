@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Sistema.Universitario.Infrastructure.Data;
 
@@ -11,9 +12,11 @@ using Sistema.Universitario.Infrastructure.Data;
 namespace Sistema.Universitario.Infrastructure.Migrations
 {
     [DbContext(typeof(SistemaUniversitarioDbContext))]
-    partial class SistemaUniversitarioDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251030042343_MakeMateriaProfessorNullable")]
+    partial class MakeMateriaProfessorNullable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

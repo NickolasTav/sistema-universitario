@@ -10,7 +10,7 @@
 <ul>
 @foreach(var m in Model.Materias)
 {
-    <li>@m.Nome (ProfessorId: @m.ProfessorId)</li>
+    <li>@m.Nome (@(string.IsNullOrEmpty(m.ProfessorNome) ? "Professor não atribuído" : m.ProfessorNome))</li>
 }
 </ul>
 

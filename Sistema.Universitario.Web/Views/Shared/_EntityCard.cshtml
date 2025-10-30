@@ -1,0 +1,36 @@
+@model dynamic
+@{
+    string GetString(string prop)
+    {
+        try
+        {
+            var val = ((object)Model)?.GetType().GetProperty(prop)?.GetValue(Model, null);
+            return val?.ToString();
+        }
+        catch
+        {
+            return null;
+        }
+    }
+
+    var title = GetString("Nome") ?? GetString("Title") ?? "Item";
+    var subtitle = GetString("CursoNome") ?? GetString("ProfessorNome") ?? GetString("Matricula");
+    var details = GetString("Id");
+    var initials = !string.IsNullOrEmpty(title) ? title.Substring(0, 1).ToUpper() : "?";
+}
+
+<div class="card-custom">
+    <div style="display:flex;gap:12px;align-items:center;">
+        <div class="card-avatar">@initials</div>
+        <div>
+            <div class="card-title-custom">@title</div>
+            @if (!string.IsNullOrEmpty(subtitle)) { <div class="card-subtitle-custom">@subtitle</div> }
+        </div>
+    </div>
+
+    <div class="card-actions mt-3">
+        <a class="btn btn-sm btn-info" asp-action="Details" asp-route-id="@Model.Id">Detalhes</a>
+        <a class="btn btn-sm btn-secondary" asp-action="Edit" asp-route-id="@Model.Id">Editar</a>
+        <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@Model.Id">Remover</a>
+    </div>
+</div>

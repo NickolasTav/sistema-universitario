@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YbnmuXPJAQ8=",
+  "dgSpecHash": "we4CK6rlTws=",
   "success": true,
-  "projectFilePath": "C:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Application\\Sistema.Universitario.Application.csproj",
+  "projectFilePath": "c:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Application\\Sistema.Universitario.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\InfoGames\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\InfoGames\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

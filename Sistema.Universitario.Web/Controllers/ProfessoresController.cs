@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Sistema.Universitario.Application.Interfaces;
+using Microsoft.Extensions.Logging;
 using Sistema.Universitario.Application.ViewModels;
 
 namespace Sistema.Universitario.Web.Controllers;
@@ -9,10 +10,12 @@ namespace Sistema.Universitario.Web.Controllers;
 public class ProfessoresController : Controller
 {
     private readonly IProfessorService _professorService;
+    private readonly ILogger<ProfessoresController> _logger;
 
-    public ProfessoresController(IProfessorService professorService)
+    public ProfessoresController(IProfessorService professorService, ILogger<ProfessoresController> logger)
     {
         _professorService = professorService;
+        _logger = logger;
     }
 
     public async Task<IActionResult> Index()
@@ -34,8 +37,23 @@ public class ProfessoresController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(ProfessorViewModel vm)
     {
-        if (!ModelState.IsValid) return View(vm);
-        await _professorService.AddAsync(vm);
+        _logger.LogInformation("Create Professor attempt: {@Professor}", vm);
+        if (!ModelState.IsValid)
+        {
+            _logger.LogWarning("Create Professor failed validation: {@ModelState}", ModelState);
+            return View(vm);
+        }
+        try
+        {
+            var added = await _professorService.AddAsync(vm);
+            _logger.LogInformation("Professor created: {Id}", added?.Id);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error creating Professor");
+            TempData["Error"] = "Erro ao salvar professor. Veja os logs.";
+            return View(vm);
+        }
         return RedirectToAction(nameof(Index));
     }
 

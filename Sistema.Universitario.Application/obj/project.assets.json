@@ -2837,11 +2837,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Application\\Sistema.Universitario.Application.csproj",
+      "projectUniqueName": "c:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Application\\Sistema.Universitario.Application.csproj",
       "projectName": "Sistema.Universitario.Application",
-      "projectPath": "C:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Application\\Sistema.Universitario.Application.csproj",
+      "projectPath": "c:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Application\\Sistema.Universitario.Application.csproj",
       "packagesPath": "C:\\Users\\InfoGames\\.nuget\\packages\\",
-      "outputPath": "C:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Application\\obj\\",
+      "outputPath": "c:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Application\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\InfoGames\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -2856,8 +2856,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "c:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Domain\\Sistema.Universitario.Domain.csproj": {
-              "projectPath": "c:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Domain\\Sistema.Universitario.Domain.csproj"
+            "C:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Domain\\Sistema.Universitario.Domain.csproj": {
+              "projectPath": "C:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Domain\\Sistema.Universitario.Domain.csproj"
             },
             "C:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Infrastructure\\Sistema.Universitario.Infrastructure.csproj": {
               "projectPath": "C:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Infrastructure\\Sistema.Universitario.Infrastructure.csproj"
