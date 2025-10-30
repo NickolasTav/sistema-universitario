@@ -10,3 +10,9 @@ C:\Trabalho-aps2\sistema-universitario\Sistema.Universitario.Application\obj\Deb
 C:\Trabalho-aps2\sistema-universitario\Sistema.Universitario.Application\obj\Debug\net8.0\refint\Sistema.Universitario.Application.dll
 C:\Trabalho-aps2\sistema-universitario\Sistema.Universitario.Application\obj\Debug\net8.0\Sistema.Universitario.Application.pdb
 C:\Trabalho-aps2\sistema-universitario\Sistema.Universitario.Application\obj\Debug\net8.0\ref\Sistema.Universitario.Application.dll
+c:\Trabalho-aps2\sistema-universitario\Sistema.Universitario.Application\bin\Debug\net8.0\Sistema.Universitario.Domain.dll
+c:\Trabalho-aps2\sistema-universitario\Sistema.Universitario.Application\bin\Debug\net8.0\Sistema.Universitario.Infrastructure.dll
+c:\Trabalho-aps2\sistema-universitario\Sistema.Universitario.Application\bin\Debug\net8.0\Sistema.Universitario.Domain.pdb
+c:\Trabalho-aps2\sistema-universitario\Sistema.Universitario.Application\bin\Debug\net8.0\Sistema.Universitario.Infrastructure.pdb
+c:\Trabalho-aps2\sistema-universitario\Sistema.Universitario.Application\obj\Debug\net8.0\Sistema.Universitario.Application.csproj.AssemblyReference.cache
+c:\Trabalho-aps2\sistema-universitario\Sistema.Universitario.Application\obj\Debug\net8.0\Sistema..54C6B8C4.Up2Date

@@ -1,0 +1,15 @@
+@model Sistema.Universitario.Application.ViewModels.ProfessorViewModel
+
+@{
+    ViewData["Title"] = "Remover Professor";
+}
+
+<h1>Remover Professor</h1>
+
+<h3>Tem certeza que deseja remover o professor '@Model.Nome'?</h3>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Remover</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

@@ -4,14 +4,14 @@
     "C:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Infrastructure\\Sistema.Universitario.Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Infrastructure\\Sistema.Universitario.Infrastructure.csproj": {
+    "c:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Domain\\Sistema.Universitario.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Infrastructure\\Sistema.Universitario.Infrastructure.csproj",
-        "projectName": "Sistema.Universitario.Infrastructure",
-        "projectPath": "C:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Infrastructure\\Sistema.Universitario.Infrastructure.csproj",
+        "projectUniqueName": "c:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Domain\\Sistema.Universitario.Domain.csproj",
+        "projectName": "Sistema.Universitario.Domain",
+        "projectPath": "c:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Domain\\Sistema.Universitario.Domain.csproj",
         "packagesPath": "C:\\Users\\InfoGames\\.nuget\\packages\\",
-        "outputPath": "C:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Infrastructure\\obj\\",
+        "outputPath": "c:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\InfoGames\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -42,6 +42,84 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.414/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Infrastructure\\Sistema.Universitario.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Infrastructure\\Sistema.Universitario.Infrastructure.csproj",
+        "projectName": "Sistema.Universitario.Infrastructure",
+        "projectPath": "C:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Infrastructure\\Sistema.Universitario.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\InfoGames\\.nuget\\packages\\",
+        "outputPath": "C:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\InfoGames\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "c:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Domain\\Sistema.Universitario.Domain.csproj": {
+                "projectPath": "c:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Domain\\Sistema.Universitario.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[9.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.10, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

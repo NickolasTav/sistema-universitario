@@ -1,0 +1,27 @@
+@model Sistema.Universitario.Application.ViewModels.CursoDetailViewModel
+
+@{
+    ViewData["Title"] = "Detalhes do Curso";
+}
+
+<h1>Curso: @Model.Nome</h1>
+
+<h3>Disciplinas</h3>
+<ul>
+@foreach(var m in Model.Materias)
+{
+    <li>@m.Nome (ProfessorId: @m.ProfessorId)</li>
+}
+</ul>
+
+<h3>Alunos</h3>
+<ul>
+@foreach(var a in Model.Alunos)
+{
+    <li>@a.Nome - @a.Matricula</li>
+}
+</ul>
+
+<p>
+    <a class="btn btn-secondary" asp-action="Index">Voltar</a>
+</p>

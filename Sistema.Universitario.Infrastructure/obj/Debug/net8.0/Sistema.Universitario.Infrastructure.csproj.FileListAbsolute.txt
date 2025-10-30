@@ -10,3 +10,9 @@ C:\Trabalho-aps2\sistema-universitario\Sistema.Universitario.Infrastructure\obj\
 C:\Trabalho-aps2\sistema-universitario\Sistema.Universitario.Infrastructure\obj\Debug\net8.0\refint\Sistema.Universitario.Infrastructure.dll
 C:\Trabalho-aps2\sistema-universitario\Sistema.Universitario.Infrastructure\obj\Debug\net8.0\Sistema.Universitario.Infrastructure.pdb
 C:\Trabalho-aps2\sistema-universitario\Sistema.Universitario.Infrastructure\obj\Debug\net8.0\ref\Sistema.Universitario.Infrastructure.dll
+C:\Trabalho-aps2\sistema-universitario\Sistema.Universitario.Infrastructure\bin\Debug\net8.0\Sistema.Universitario.Infrastructure.runtimeconfig.json
+c:\Trabalho-aps2\sistema-universitario\Sistema.Universitario.Infrastructure\bin\Debug\net8.0\Sistema.Universitario.Domain.dll
+c:\Trabalho-aps2\sistema-universitario\Sistema.Universitario.Infrastructure\bin\Debug\net8.0\Sistema.Universitario.Domain.pdb
+c:\Trabalho-aps2\sistema-universitario\Sistema.Universitario.Infrastructure\obj\Debug\net8.0\Sistema.Universitario.Infrastructure.csproj.AssemblyReference.cache
+C:\Trabalho-aps2\sistema-universitario\Sistema.Universitario.Infrastructure\obj\Debug\net8.0\Sistema..4D803362.Up2Date
+C:\Trabalho-aps2\sistema-universitario\Sistema.Universitario.Infrastructure\obj\Debug\net8.0\Sistema.Universitario.Infrastructure.genruntimeconfig.cache

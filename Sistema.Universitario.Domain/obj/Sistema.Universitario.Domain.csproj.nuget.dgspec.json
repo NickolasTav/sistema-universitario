@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Domain\\Sistema.Universitario.Domain.csproj": {}
+    "c:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Domain\\Sistema.Universitario.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Domain\\Sistema.Universitario.Domain.csproj": {
+    "c:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Domain\\Sistema.Universitario.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Domain\\Sistema.Universitario.Domain.csproj",
+        "projectUniqueName": "c:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Domain\\Sistema.Universitario.Domain.csproj",
         "projectName": "Sistema.Universitario.Domain",
-        "projectPath": "C:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Domain\\Sistema.Universitario.Domain.csproj",
+        "projectPath": "c:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Domain\\Sistema.Universitario.Domain.csproj",
         "packagesPath": "C:\\Users\\InfoGames\\.nuget\\packages\\",
-        "outputPath": "C:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Domain\\obj\\",
+        "outputPath": "c:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\InfoGames\\AppData\\Roaming\\NuGet\\NuGet.Config"

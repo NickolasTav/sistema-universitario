@@ -6,4 +6,17 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Sistema.Universitario.Domain\Sistema.Universitario.Domain.csproj" />
+    <ProjectReference Include="..\Sistema.Universitario.Infrastructure\Sistema.Universitario.Infrastructure.csproj" />
+    <ProjectReference Include="..\Sistema.Universitario.Application\Sistema.Universitario.Application.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.10">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+
 </Project>

@@ -6,4 +6,14 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Sistema.Universitario.Domain\Sistema.Universitario.Domain.csproj" />
+    <ProjectReference Include="..\Sistema.Universitario.Infrastructure\Sistema.Universitario.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Sistema.Universitario.Domain\Sistema.Universitario.Domain.csproj" />
+    <ProjectReference Include="..\Sistema.Universitario.Infrastructure\Sistema.Universitario.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

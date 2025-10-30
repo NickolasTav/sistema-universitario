@@ -1,7 +1,31 @@
-var builder = WebApplication.CreateBuilder(args);
+using Microsoft.EntityFrameworkCore;
+using Sistema.Universitario.Infrastructure.Data;
+using Sistema.Universitario.Infrastructure.Repositories;
+using Sistema.Universitario.Application.Interfaces;
+using Sistema.Universitario.Application.Services;
 
-// Add services to the container.
+var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
+
+// Force the web host to listen on localhost:8080 for this app (HTTP)
+builder.WebHost.UseUrls("http://localhost:8080");
+
+builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<SistemaUniversitarioDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+
+builder.Services.AddScoped<IAlunoRepository, AlunoRepository>();
+builder.Services.AddScoped<IProfessorRepository, ProfessorRepository>();
+builder.Services.AddScoped<ICursoRepository, CursoRepository>();
+builder.Services.AddScoped<IMateriaRepository, MateriaRepository>();
+
+
+builder.Services.AddScoped<IAlunoService, AlunoService>();
+builder.Services.AddScoped<IProfessorService, ProfessorService>();
+builder.Services.AddScoped<ICursoService, CursoService>();
+builder.Services.AddScoped<IMateriaService, MateriaService>();
 
 var app = builder.Build();
 
