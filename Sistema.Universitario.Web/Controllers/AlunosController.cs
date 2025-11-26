@@ -25,6 +25,20 @@ public class AlunosController : Controller
         return View(list);
     }
 
+    [HttpGet]
+    public async Task<IActionResult> Search(string q)
+    {
+        var list = (await _alunoService.GetAllAsync()).ToList();
+        if (!string.IsNullOrWhiteSpace(q))
+        {
+            q = q.Trim();
+            list = list.Where(a => (a.Nome ?? string.Empty).Contains(q, StringComparison.OrdinalIgnoreCase)
+                || (a.Matricula ?? string.Empty).Contains(q, StringComparison.OrdinalIgnoreCase)
+                || (a.CursoNome ?? string.Empty).Contains(q, StringComparison.OrdinalIgnoreCase)).ToList();
+        }
+        return Json(list.Take(50));
+    }
+
     public async Task<IActionResult> Details(Guid id)
     {
         var model = await _alunoService.GetByIdAsync(id);

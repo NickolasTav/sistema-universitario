@@ -8,8 +8,16 @@
     <h1>Disciplinas</h1>
     <div class="controls-row">
         <a class="btn btn-primary" asp-action="Create">Criar nova disciplina</a>
+        <div class="ms-3">
+            <input id="searchBox" class="form-control" placeholder="Buscar disciplinas por nome, curso ou professor..." />
+        </div>
     </div>
 </div>
+
+@section Scripts {
+    <script src="~/js/search.js" asp-append-version="true"></script>
+    <script>appSearch.attach('Materias');</script>
+}
 
 <div class="cards-grid">
 @foreach (var item in Model)

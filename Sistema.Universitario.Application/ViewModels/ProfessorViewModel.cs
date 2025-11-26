@@ -9,5 +9,6 @@ public class ProfessorViewModel
 
         [Required]
         [MaxLength(100)]
+        [Sistema.Universitario.Application.Validation.FullName]
         public string Nome { get; set; }
 }

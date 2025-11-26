@@ -4743,11 +4743,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Infrastructure\\Sistema.Universitario.Infrastructure.csproj",
+      "projectUniqueName": "C:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Infrastructure\\Sistema.Universitario.Infrastructure.csproj",
       "projectName": "Sistema.Universitario.Infrastructure",
-      "projectPath": "c:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Infrastructure\\Sistema.Universitario.Infrastructure.csproj",
+      "projectPath": "C:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Infrastructure\\Sistema.Universitario.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\InfoGames\\.nuget\\packages\\",
-      "outputPath": "c:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Infrastructure\\obj\\",
+      "outputPath": "C:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\InfoGames\\AppData\\Roaming\\NuGet\\NuGet.Config"

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Mapster;
 using Sistema.Universitario.Application.Interfaces;
 using Sistema.Universitario.Application.ViewModels;
 using Sistema.Universitario.Domain.Entities;
@@ -22,9 +23,14 @@ public class AlunoService : IAlunoService
 
     public async Task<AlunoViewModel> AddAsync(AlunoViewModel aluno)
     {
-        var entity = ToEntity(aluno);
+        var entity = aluno.Adapt<Domain.Entities.Aluno>();
+        // ensure we don't persist an empty Guid as Id (Mapster maps default Guid from VM)
+        if (entity.Id == Guid.Empty)
+        {
+            entity.Id = Guid.NewGuid();
+        }
         var added = await _repository.AddAsync(entity);
-        return ToViewModel(added);
+        return added.Adapt<AlunoViewModel>();
     }
 
     public async Task<bool> DeleteAsync(Guid id)
@@ -36,52 +42,30 @@ public class AlunoService : IAlunoService
     {
         var list = await _repository.GetAllAsync();
         var cursos = (await _cursoRepository.GetAllAsync()).ToDictionary(c => c.Id, c => c.Nome);
-        return list.Select(e => new AlunoViewModel
+        var vms = list.Select(e => e.Adapt<AlunoViewModel>());
+        // fill CursoNome from lookup
+        foreach (var vm in vms)
         {
-            Id = e.Id,
-            Nome = e.Nome,
-            Matricula = e.Matricula,
-            CursoId = e.CursoId,
-            CursoNome = cursos.TryGetValue(e.CursoId, out var nome) ? nome : null
-        });
+            vm.CursoNome = cursos.TryGetValue(vm.CursoId, out var nome) ? nome : null;
+        }
+        return vms;
     }
 
     public async Task<AlunoViewModel> GetByIdAsync(Guid id)
     {
         var e = await _repository.GetByIdAsync(id);
         if (e == null) return null;
+        var vm = e.Adapt<AlunoViewModel>();
         var curso = await _cursoRepository.GetByIdAsync(e.CursoId);
-        return new AlunoViewModel
-        {
-            Id = e.Id,
-            Nome = e.Nome,
-            Matricula = e.Matricula,
-            CursoId = e.CursoId,
-            CursoNome = curso?.Nome
-        };
+        vm.CursoNome = curso?.Nome;
+        return vm;
     }
 
     public async Task<AlunoViewModel> UpdateAsync(AlunoViewModel aluno)
     {
-        var entity = ToEntity(aluno);
+        var entity = aluno.Adapt<Domain.Entities.Aluno>();
         var updated = await _repository.UpdateAsync(entity);
-        return ToViewModel(updated);
+        return updated.Adapt<AlunoViewModel>();
     }
-
-    // simple mappers
-    private static AlunoViewModel ToViewModel(Aluno e) => new AlunoViewModel
-    {
-        Id = e.Id,
-        Nome = e.Nome,
-        Matricula = e.Matricula,
-        CursoId = e.CursoId
-    };
-
-    private static Aluno ToEntity(AlunoViewModel vm) => new Aluno
-    {
-        Id = vm.Id == Guid.Empty ? Guid.NewGuid() : vm.Id,
-        Nome = vm.Nome,
-        Matricula = vm.Matricula,
-        CursoId = vm.CursoId
-    };
+    
 }

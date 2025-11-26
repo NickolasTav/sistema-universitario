@@ -9,10 +9,12 @@ public class AlunoViewModel
 
         [Required]
         [MaxLength(100)]
+        [Sistema.Universitario.Application.Validation.FullName]
         public string Nome { get; set; }
 
         [Required]
         [MaxLength(20)]
+        [Sistema.Universitario.Application.Validation.Matricula]
         public string Matricula { get; set; }
 
         [Required]

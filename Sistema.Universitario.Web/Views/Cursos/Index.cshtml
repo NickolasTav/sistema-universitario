@@ -8,8 +8,16 @@
     <h1>Cursos</h1>
     <div class="controls-row">
         <a class="btn btn-primary" asp-action="Create">Criar novo curso</a>
+        <div class="ms-3">
+            <input id="searchBox" class="form-control" placeholder="Buscar cursos por nome..." />
+        </div>
     </div>
 </div>
+
+@section Scripts {
+    <script src="~/js/search.js" asp-append-version="true"></script>
+    <script>appSearch.attach('Cursos');</script>
+}
 
 <div class="cards-grid">
 @foreach (var item in Model)

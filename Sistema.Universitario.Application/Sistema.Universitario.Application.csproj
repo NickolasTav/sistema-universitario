@@ -16,4 +16,10 @@
     <ProjectReference Include="..\Sistema.Universitario.Infrastructure\Sistema.Universitario.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Mapster">
+      <Version>7.4.0</Version>
+    </PackageReference>
+  </ItemGroup>
+
 </Project>

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Application\\Sistema.Universitario.Application.csproj": {}
+    "C:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Application\\Sistema.Universitario.Application.csproj": {}
   },
   "projects": {
-    "c:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Application\\Sistema.Universitario.Application.csproj": {
+    "C:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Application\\Sistema.Universitario.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Application\\Sistema.Universitario.Application.csproj",
+        "projectUniqueName": "C:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Application\\Sistema.Universitario.Application.csproj",
         "projectName": "Sistema.Universitario.Application",
-        "projectPath": "c:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Application\\Sistema.Universitario.Application.csproj",
+        "projectPath": "C:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Application\\Sistema.Universitario.Application.csproj",
         "packagesPath": "C:\\Users\\InfoGames\\.nuget\\packages\\",
-        "outputPath": "c:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Application\\obj\\",
+        "outputPath": "C:\\Trabalho-aps2\\sistema-universitario\\Sistema.Universitario.Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\InfoGames\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -49,6 +49,12 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Mapster": {
+              "target": "Package",
+              "version": "[7.4.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

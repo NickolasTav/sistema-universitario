@@ -3,6 +3,7 @@ using Sistema.Universitario.Infrastructure.Data;
 using Sistema.Universitario.Infrastructure.Repositories;
 using Sistema.Universitario.Application.Interfaces;
 using Sistema.Universitario.Application.Services;
+using Sistema.Universitario.Application.Mapping;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
@@ -14,6 +15,9 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<SistemaUniversitarioDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// Mapster configuration (config lives in Application layer)
+MapsterConfig.Register();
 
 
 builder.Services.AddScoped<IAlunoRepository, AlunoRepository>();

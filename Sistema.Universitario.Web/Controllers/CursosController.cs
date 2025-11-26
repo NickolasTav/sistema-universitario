@@ -24,6 +24,18 @@ public class CursosController : Controller
         return View(list);
     }
 
+    [HttpGet]
+    public async Task<IActionResult> Search(string q)
+    {
+        var list = (await _cursoService.GetAllAsync()).ToList();
+        if (!string.IsNullOrWhiteSpace(q))
+        {
+            q = q.Trim();
+            list = list.Where(c => (c.Nome ?? string.Empty).Contains(q, StringComparison.OrdinalIgnoreCase)).ToList();
+        }
+        return Json(list.Take(50));
+    }
+
     public async Task<IActionResult> Details(Guid id)
     {
         var model = await _cursoService.GetByIdWithDetailsAsync(id);
