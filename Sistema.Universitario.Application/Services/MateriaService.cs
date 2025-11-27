@@ -6,6 +6,7 @@ using Sistema.Universitario.Application.Interfaces;
 using Sistema.Universitario.Application.ViewModels;
 using Sistema.Universitario.Domain.Entities;
 using Sistema.Universitario.Infrastructure.Repositories;
+using Mapster;
 
 namespace Sistema.Universitario.Application.Services;
 
@@ -26,17 +27,12 @@ public class MateriaService : IMateriaService
     {
         if (!materia.CursoId.HasValue)
             throw new ArgumentException("CursoId is required", nameof(materia.CursoId));
-
-        var entity = new Materia
-        {
-            Id = materia.Id == Guid.Empty ? Guid.NewGuid() : materia.Id,
-            Nome = materia.Nome,
-            CursoId = materia.CursoId.Value,
-            ProfessorId = materia.ProfessorId
-        };
-
+        var entity = materia.Adapt<Materia>();
+        if (entity.Id == Guid.Empty) entity.Id = Guid.NewGuid();
+        // ensure CursoId is set (Mapster maps nullable to Guid.Empty in config)
+        if (entity.CursoId == Guid.Empty && materia.CursoId.HasValue) entity.CursoId = materia.CursoId.Value;
         var added = await _repository.AddAsync(entity);
-        return new MateriaViewModel { Id = added.Id, Nome = added.Nome, CursoId = added.CursoId, ProfessorId = added.ProfessorId };
+        return added.Adapt<MateriaViewModel>();
     }
 
     public async Task<bool> DeleteAsync(Guid id)
@@ -49,25 +45,13 @@ public class MateriaService : IMateriaService
         var list = await _repository.GetAllAsync();
         var cursos = (await _cursoRepository.GetAllAsync()).ToDictionary(c => c.Id, c => c.Nome);
         var profs = (await _professorRepository.GetAllAsync()).ToDictionary(p => p.Id, p => p.Nome);
-        return list.Select(m => {
-            string? professorNome = null;
-            Guid? professorId = m.ProfessorId;
-            if (professorId.HasValue)
-            {
-                profs.TryGetValue(professorId.Value, out var pn);
-                professorNome = pn;
-            }
-
-            return new MateriaViewModel
-            {
-                Id = m.Id,
-                Nome = m.Nome,
-                CursoId = m.CursoId,
-                CursoNome = cursos.TryGetValue(m.CursoId, out var cn) ? cn : null,
-                ProfessorId = professorId,
-                ProfessorNome = professorNome
-            };
-        });
+        var vms = list.Select(m => m.Adapt<MateriaViewModel>()).ToList();
+        foreach (var vm in vms)
+        {
+            if (vm.CursoId.HasValue && cursos.TryGetValue(vm.CursoId.Value, out var cn)) vm.CursoNome = cn; else vm.CursoNome = null;
+            if (vm.ProfessorId.HasValue && profs.TryGetValue(vm.ProfessorId.Value, out var pn)) vm.ProfessorNome = pn; else vm.ProfessorNome = null;
+        }
+        return vms;
     }
 
     public async Task<MateriaViewModel?> GetByIdAsync(Guid id)
@@ -76,35 +60,25 @@ public class MateriaService : IMateriaService
         if (m == null) return null;
         var curso = await _cursoRepository.GetByIdAsync(m.CursoId);
     var prof = m.ProfessorId.HasValue ? await _professorRepository.GetByIdAsync(m.ProfessorId.Value) : null;
-        return new MateriaViewModel
-        {
-            Id = m.Id,
-            Nome = m.Nome,
-            CursoId = m.CursoId,
-            CursoNome = curso?.Nome,
-            ProfessorId = m.ProfessorId,
-            ProfessorNome = prof?.Nome
-        };
+        var vm = m.Adapt<MateriaViewModel>();
+        vm.CursoNome = curso?.Nome;
+        vm.ProfessorNome = prof?.Nome;
+        return vm;
     }
 
     public async Task<MateriaViewModel> UpdateAsync(MateriaViewModel materia)
     {
         if (!materia.CursoId.HasValue)
             throw new ArgumentException("CursoId is required", nameof(materia.CursoId));
-
-        var entity = new Materia { Id = materia.Id, Nome = materia.Nome, CursoId = materia.CursoId.Value, ProfessorId = materia.ProfessorId };
+        var entity = materia.Adapt<Materia>();
+        if (entity.CursoId == Guid.Empty && materia.CursoId.HasValue) entity.CursoId = materia.CursoId.Value;
         var updated = await _repository.UpdateAsync(entity);
         var curso = await _cursoRepository.GetByIdAsync(updated.CursoId);
     var prof = updated.ProfessorId.HasValue ? await _professorRepository.GetByIdAsync(updated.ProfessorId.Value) : null;
-        return new MateriaViewModel
-        {
-            Id = updated.Id,
-            Nome = updated.Nome,
-            CursoId = updated.CursoId,
-            CursoNome = curso?.Nome,
-            ProfessorId = updated.ProfessorId,
-            ProfessorNome = prof?.Nome
-        };
+        var vm = updated.Adapt<MateriaViewModel>();
+        vm.CursoNome = curso?.Nome;
+        vm.ProfessorNome = prof?.Nome;
+        return vm;
     }
 }
 

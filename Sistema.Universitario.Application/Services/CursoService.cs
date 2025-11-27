@@ -6,6 +6,7 @@ using Sistema.Universitario.Application.Interfaces;
 using Sistema.Universitario.Application.ViewModels;
 using Sistema.Universitario.Domain.Entities;
 using Sistema.Universitario.Infrastructure.Repositories;
+using Mapster;
 
 namespace Sistema.Universitario.Application.Services;
 
@@ -20,9 +21,10 @@ public class CursoService : ICursoService
 
     public async Task<CursoViewModel> AddAsync(CursoViewModel curso)
     {
-        var entity = new Curso { Id = curso.Id == Guid.Empty ? Guid.NewGuid() : curso.Id, Nome = curso.Nome };
+        var entity = curso.Adapt<Curso>();
+        if (entity.Id == Guid.Empty) entity.Id = Guid.NewGuid();
         var added = await _repository.AddAsync(entity);
-        return new CursoViewModel { Id = added.Id, Nome = added.Nome };
+        return added.Adapt<CursoViewModel>();
     }
 
     public async Task<bool> DeleteAsync(Guid id)
@@ -33,34 +35,44 @@ public class CursoService : ICursoService
     public async Task<IEnumerable<CursoViewModel>> GetAllAsync()
     {
         var list = await _repository.GetAllAsync();
-        return list.Select(c => new CursoViewModel { Id = c.Id, Nome = c.Nome });
+        return list.Select(c => c.Adapt<CursoViewModel>());
     }
 
     public async Task<CursoViewModel> GetByIdAsync(Guid id)
     {
         var c = await _repository.GetByIdAsync(id);
-        return c == null ? null : new CursoViewModel { Id = c.Id, Nome = c.Nome };
+        return c == null ? null : c.Adapt<CursoViewModel>();
     }
 
     public async Task<CursoViewModel> UpdateAsync(CursoViewModel curso)
     {
-        var entity = new Curso { Id = curso.Id, Nome = curso.Nome };
+        var entity = curso.Adapt<Curso>();
         var updated = await _repository.UpdateAsync(entity);
-        return new CursoViewModel { Id = updated.Id, Nome = updated.Nome };
+        return updated.Adapt<CursoViewModel>();
     }
 
     public async Task<CursoDetailViewModel> GetByIdWithDetailsAsync(Guid id)
     {
         var c = await _repository.GetByIdWithDetailsAsync(id);
         if (c == null) return null;
-
         var detail = new CursoDetailViewModel
         {
             Id = c.Id,
             Nome = c.Nome,
-            Materias = c.Materias?.Select(m => new MateriaViewModel { Id = m.Id, Nome = m.Nome, CursoId = m.CursoId, ProfessorId = m.ProfessorId, ProfessorNome = m.Professor?.Nome }) ?? Enumerable.Empty<MateriaViewModel>(),
-            Alunos = c.Alunos?.Select(a => new AlunoViewModel { Id = a.Id, Nome = a.Nome, Matricula = a.Matricula, CursoId = a.CursoId, CursoNome = c.Nome }) ?? Enumerable.Empty<AlunoViewModel>()
+            Materias = c.Materias?.Select(m => m.Adapt<MateriaViewModel>()).ToList() ?? Enumerable.Empty<MateriaViewModel>(),
+            Alunos = c.Alunos?.Select(a => a.Adapt<AlunoViewModel>()).ToList() ?? Enumerable.Empty<AlunoViewModel>()
         };
+
+        // fill related display names
+        var cursos = new Dictionary<Guid, string> { { c.Id, c.Nome } };
+        foreach (var m in detail.Materias)
+        {
+            if (m.CursoId.HasValue && cursos.TryGetValue(m.CursoId.Value, out var cn)) m.CursoNome = cn; else m.CursoNome = null;
+        }
+        foreach (var a in detail.Alunos)
+        {
+            a.CursoNome = c.Nome;
+        }
 
         return detail;
     }
