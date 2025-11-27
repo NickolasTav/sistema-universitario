@@ -21,7 +21,9 @@
     </div>
     <div class="form-group">
         <label asp-for="CursoId">Curso</label>
-        <select asp-for="CursoId" class="form-control" asp-items="(SelectList)ViewBag.Cursos"></select>
+        <select asp-for="CursoId" class="form-control" asp-items="(SelectList)ViewBag.Cursos" required>
+            <option value="">-- Selecione um curso --</option>
+        </select>
         <span asp-validation-for="CursoId" class="text-danger"></span>
     </div>
     <div class="form-group mt-2">

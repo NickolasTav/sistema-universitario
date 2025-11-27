@@ -1,4 +1,3 @@
-// Simple AJAX search helper for index pages
 window.appSearch = (function () {
     async function fetchResults(controller, q) {
         const url = `/${controller}/Search?q=${encodeURIComponent(q || '')}`;
@@ -22,12 +21,38 @@ window.appSearch = (function () {
             const nome = getProp(item, 'Nome');
             const matricula = getProp(item, 'Matricula');
             const curso = getProp(item, 'CursoNome');
+            const initials = (nome || '?').charAt(0).toUpperCase();
             return `
             <div class="card-custom">
-                <div>
-                    <div class="card-title-custom">${escapeHtml(nome)}</div>
-                    <div class="card-subtitle-custom">Matrícula: ${escapeHtml(matricula)}</div>
-                    <div class="card-subtitle-custom">Curso: ${escapeHtml(curso)}</div>
+                <div style="display:flex;gap:12px;align-items:center;">
+                    <div class="card-avatar">${escapeHtml(initials)}</div>
+                    <div>
+                        <div class="card-title-custom">${escapeHtml(nome)}</div>
+                        <div class="card-subtitle-custom">Matrícula: ${escapeHtml(matricula)}</div>
+                        <div class="card-subtitle-custom">Curso: ${escapeHtml(curso)}</div>
+                    </div>
+                </div>
+                <div class="card-actions">
+                    <a class="btn btn-sm btn-info" href="/${controller}/Details/${id}">Detalhes</a>
+                    <a class="btn btn-sm btn-secondary" href="/${controller}/Edit/${id}">Editar</a>
+                    <a class="btn btn-sm btn-danger" href="/${controller}/Delete/${id}">Remover</a>
+                </div>
+            </div>`;
+        }
+        if (controller === 'Materias') {
+            const nome = getProp(item, 'Nome');
+            const curso = getProp(item, 'CursoNome');
+            const professor = getProp(item, 'ProfessorNome');
+            const initials = (nome || '?').charAt(0).toUpperCase();
+            return `
+            <div class="card-custom">
+                <div style="display:flex;gap:12px;align-items:center;">
+                    <div class="card-avatar">${escapeHtml(initials)}</div>
+                    <div>
+                        <div class="card-title-custom">${escapeHtml(nome)}</div>
+                        <div class="card-subtitle-custom">Curso: ${escapeHtml(curso)}</div>
+                        <div class="card-subtitle-custom">Professor: ${escapeHtml(professor)}</div>
+                    </div>
                 </div>
                 <div class="card-actions">
                     <a class="btn btn-sm btn-info" href="/${controller}/Details/${id}">Detalhes</a>
@@ -38,10 +63,14 @@ window.appSearch = (function () {
         }
         // generic fallback for other controllers
         const nome = getProp(item, 'Nome');
+        const initials = (nome || '?').charAt(0).toUpperCase();
         return `
             <div class="card-custom">
-                <div>
-                    <div class="card-title-custom">${escapeHtml(nome)}</div>
+                <div style="display:flex;gap:12px;align-items:center;">
+                    <div class="card-avatar">${escapeHtml(initials)}</div>
+                    <div>
+                        <div class="card-title-custom">${escapeHtml(nome)}</div>
+                    </div>
                 </div>
                 <div class="card-actions">
                     <a class="btn btn-sm btn-info" href="/${controller}/Details/${id}">Detalhes</a>

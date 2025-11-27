@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Sistema.Universitario.Application.Interfaces;
 using Sistema.Universitario.Application.ViewModels;
+using Microsoft.Extensions.Logging;
 
 namespace Sistema.Universitario.Web.Controllers;
 
@@ -12,11 +13,13 @@ public class AlunosController : Controller
 {
     private readonly IAlunoService _alunoService;
     private readonly ICursoService _cursoService;
+    private readonly ILogger<AlunosController> _logger;
 
-    public AlunosController(IAlunoService alunoService, ICursoService cursoService)
+    public AlunosController(IAlunoService alunoService, ICursoService cursoService, ILogger<AlunosController> logger)
     {
         _alunoService = alunoService;
         _cursoService = cursoService;
+        _logger = logger;
     }
 
     public async Task<IActionResult> Index()
@@ -50,7 +53,6 @@ public class AlunosController : Controller
     {
         var cursos = await _cursoService.GetAllAsync();
         ViewBag.Cursos = new SelectList(cursos, "Id", "Nome");
-        // If there are no cursos yet, redirect to create a course first
         if (!cursos.Any())
         {
             TempData["Info"] = "Não existem cursos. Crie um curso antes de cadastrar alunos.";
@@ -63,13 +65,36 @@ public class AlunosController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(AlunoViewModel vm)
     {
+        _logger.LogInformation("Create Aluno attempt: {@Aluno}", vm);
         if (!ModelState.IsValid)
         {
+            foreach (var entry in ModelState)
+            {
+                var key = entry.Key;
+                var errors = entry.Value.Errors.Select(e => e.ErrorMessage).Where(m => !string.IsNullOrWhiteSpace(m));
+                if (errors.Any())
+                {
+                    _logger.LogWarning("ModelState error for {Key}: {Errors}", key, string.Join("; ", errors));
+                }
+            }
             var cursos = await _cursoService.GetAllAsync();
             ViewBag.Cursos = new SelectList(cursos, "Id", "Nome");
+            _logger.LogWarning("Create Aluno failed validation: {@ModelState}", ModelState);
             return View(vm);
         }
-        await _alunoService.AddAsync(vm);
+        try
+        {
+            var added = await _alunoService.AddAsync(vm);
+            _logger.LogInformation("Aluno created: {Id}", added?.Id);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error creating Aluno");
+            var cursos = await _cursoService.GetAllAsync();
+            ViewBag.Cursos = new SelectList(cursos, "Id", "Nome");
+            TempData["Error"] = "Erro ao salvar aluno. Veja os logs.";
+            return View(vm);
+        }
         return RedirectToAction(nameof(Index));
     }
 
@@ -91,9 +116,21 @@ public class AlunosController : Controller
         {
             var cursos = await _cursoService.GetAllAsync();
             ViewBag.Cursos = new SelectList(cursos, "Id", "Nome", vm.CursoId);
+            _logger.LogWarning("Edit Aluno failed validation: {@ModelState}", ModelState);
             return View(vm);
         }
-        await _alunoService.UpdateAsync(vm);
+        try
+        {
+            await _alunoService.UpdateAsync(vm);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error updating Aluno {Id}", vm.Id);
+            var cursos = await _cursoService.GetAllAsync();
+            ViewBag.Cursos = new SelectList(cursos, "Id", "Nome", vm.CursoId);
+            TempData["Error"] = "Erro ao atualizar aluno. Veja os logs.";
+            return View(vm);
+        }
         return RedirectToAction(nameof(Index));
     }
 
